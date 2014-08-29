@@ -44,11 +44,11 @@
     
     UIImageView *imageView = (UIImageView *)[self viewWithTag:100];
     
+   
     if (news.image){
         imageView.image = [UIImage imageWithData:news.image];
     } else {
         imageView.image = [UIImage imageNamed:DEFAULT_IMAGE_NAME];
-       
         [self performSelectorInBackground:@selector(loadImageForNews:) withObject:news];
     }
 }
@@ -62,8 +62,7 @@
         NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
         if ((error == nil) && (data != nil)){
             news.image = data;
-    
-            [[NSNotificationCenter defaultCenter] postNotificationName:IMAGE_LOAD_NOTIFICATION object:self];
+            
         } else {
         // NSLog(@"ERROR IMAGE LOAD");
         }

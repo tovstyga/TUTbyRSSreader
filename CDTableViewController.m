@@ -52,11 +52,6 @@
                                                  name:LOADING_NEWS_FINISHED
                                                object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(imageLoadadNotification:)
-                                                 name:IMAGE_LOAD_NOTIFICATION
-                                               object:self];
-    
     NSError *error;
     [self.fetchedResultsController performFetch:&error];
 
@@ -87,7 +82,6 @@
     
     [(AppDelegate *)[[UIApplication sharedApplication] delegate] setUrl:news.link];
     
-    //NSLog(@"%@", news.imageURL);
     
 }
 
@@ -97,8 +91,7 @@
 
 - (IBAction)updateContent:(id)sender {
     
-   // if (![self.indicator isAnimating])
-        [self spin];
+    [self spin];
     
     [RSSDataLoader loadNews];
 }
@@ -129,7 +122,6 @@
         [self.tableView setDelegate:nil];
         [self.tableView setDataSource:nil];
         
-        _fetchedResultsController = nil;
         
         
         [self spin];
@@ -225,37 +217,24 @@
 
 //Notification handler
 
--(void)imageLoadadNotification:(NSNotification *)notification{
-    if (notification.object == nil)
-        return;
-    
-    MyCell *cell = (MyCell *)notification.object;
-    dispatch_sync(dispatch_get_main_queue(),^{
-        
-        NSIndexPath *path = [self.tableView indexPathForCell:cell];
-        
-        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:UITableViewRowAnimationNone];
-    });
-  
-  
-    
-}
-
 -(void)dataLoadNotification : (NSNotification *)notification{
     
     self.fetchedResultsController = nil;
-    NSError *error;
-    [self.fetchedResultsController performFetch:&error];
+    
     
     [self.tableView setDataSource:self];
     [self.tableView setDelegate:self];
     
-    [self.tableView reloadData];
+    NSError *error;
+    [self.fetchedResultsController performFetch:&error];
+    
+
     [self.indicator stopAnimating];
     [self.overlayView removeFromSuperview];
     self.tableView.scrollEnabled = true;
     self.navigationItem.rightBarButtonItem.enabled = true;
     self.navigationItem.leftBarButtonItem.enabled = true;
+
 }
 
 //end notification handler
@@ -279,6 +258,8 @@
     [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
     
     [fetchRequest setFetchBatchSize:20];
+    
+    
     
     NSFetchedResultsController *theFetchedResultsController =
     [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
