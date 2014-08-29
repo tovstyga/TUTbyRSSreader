@@ -125,6 +125,13 @@
         
         
         [alert show];
+        
+        [self.tableView setDelegate:nil];
+        [self.tableView setDataSource:nil];
+        
+        _fetchedResultsController = nil;
+        
+        
         [self spin];
         
         
@@ -240,6 +247,8 @@
     NSError *error;
     [self.fetchedResultsController performFetch:&error];
     
+    [self.tableView setDataSource:self];
+    [self.tableView setDelegate:self];
     
     [self.tableView reloadData];
     [self.indicator stopAnimating];
