@@ -45,8 +45,8 @@
 /* Begin PBXFileReference section */
 		841242F719A4DFDF00A2B7F0 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		841242F819A4DFDF00A2B7F0 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
-		84326C1519ADADAB008C171E /* News.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = News.h; path = ../News.h; sourceTree = "<group>"; };
-		84326C1619ADADAB008C171E /* News.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = News.m; path = ../News.m; sourceTree = "<group>"; };
+		84326C1519ADADAB008C171E /* News.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = News.h; sourceTree = "<group>"; };
+		84326C1619ADADAB008C171E /* News.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = News.m; sourceTree = "<group>"; };
 		8478D3C619AC750600DCAD6C /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		84CBA1CA19A329F9004A6EB7 /* TUTbyRSS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TUTbyRSS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84CBA1CD19A329F9004A6EB7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -73,8 +73,8 @@
 		84CBA21719A337F0004A6EB7 /* XMLParserDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLParserDelegate.m; sourceTree = "<group>"; };
 		84CBA21C19A3753D004A6EB7 /* News+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "News+Create.h"; sourceTree = "<group>"; };
 		84CBA21D19A3753D004A6EB7 /* News+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "News+Create.m"; sourceTree = "<group>"; };
-		84CBA22219A381D1004A6EB7 /* CDTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDTableViewController.h; path = ../CDTableViewController.h; sourceTree = "<group>"; };
-		84CBA22319A381D1004A6EB7 /* CDTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDTableViewController.m; path = ../CDTableViewController.m; sourceTree = "<group>"; };
+		84CBA22219A381D1004A6EB7 /* CDTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTableViewController.h; sourceTree = "<group>"; };
+		84CBA22319A381D1004A6EB7 /* CDTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTableViewController.m; sourceTree = "<group>"; };
 		84EEE82919AEF4B200D234CF /* MyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCell.h; sourceTree = "<group>"; };
 		84EEE82A19AEF4B200D234CF /* MyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -190,7 +190,7 @@
 				84CBA21C19A3753D004A6EB7 /* News+Create.h */,
 				84CBA21D19A3753D004A6EB7 /* News+Create.m */,
 			);
-			name = Data;
+			path = Data;
 			sourceTree = "<group>";
 		};
 		84F31B1819A5CE61001F950E /* Controller */ = {
@@ -203,7 +203,7 @@
 				841242F719A4DFDF00A2B7F0 /* WebViewController.h */,
 				841242F819A4DFDF00A2B7F0 /* WebViewController.m */,
 			);
-			name = Controller;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		84F31B1919A5CEA6001F950E /* ContentLoader */ = {
@@ -214,7 +214,7 @@
 				84CBA21619A337F0004A6EB7 /* XMLParserDelegate.h */,
 				84CBA21719A337F0004A6EB7 /* XMLParserDelegate.m */,
 			);
-			name = ContentLoader;
+			path = ContentLoader;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
