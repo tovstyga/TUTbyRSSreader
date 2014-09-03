@@ -9,7 +9,7 @@
 #import "RSSDataLoader.h"
 #import "XMLParserDelegate.h"
 #import "Constants.h"
-
+#import "DataBaseDirector.h"
 
 
 @interface RSSDataLoader()
@@ -66,6 +66,8 @@ static RSSDataLoader *sharedInstance;
         dispatch_sync(dispatch_get_main_queue(), ^{[view show];});
         
     }
+    
+    [[DataBaseDirector getInstance] saveNewObjects:[delegate objects]];
     
     loading = false;
     [[NSNotificationCenter defaultCenter] postNotificationName:LOADING_NEWS_FINISHED

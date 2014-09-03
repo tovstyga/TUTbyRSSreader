@@ -12,7 +12,8 @@
 #import "RSSDataLoader.h"
 #import "WebViewController.h"
 #import "Constants.h"
-#import "MyCell.h"
+#import "NewsItemCell.h"
+#import "DataBaseDirector.h"
 
 @interface CDTableViewController ()
 
@@ -52,13 +53,13 @@
                                                  name:LOADING_NEWS_FINISHED
                                                object:nil];
     
+    self.fetchedResultsController = [[DataBaseDirector getInstance] fetchedResultController:self];
     NSError *error;
     [self.fetchedResultsController performFetch:&error];
 
 }
 
-- (void)viewDidUnload{
-    [super viewDidUnload];
+- (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     self.fetchedResultsController = nil;
 }
@@ -109,25 +110,13 @@
 -(void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex{
     if (buttonIndex != [actionSheet cancelButtonIndex]){
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:TUT_BY
-                                                        message:CLEANING_COMPLETE
-                                                       delegate:nil
-                                              cancelButtonTitle:OK_BTN
-                                              otherButtonTitles:nil, nil];
-        
-        
-        
-        [alert show];
-        
         [self.tableView setDelegate:nil];
         [self.tableView setDataSource:nil];
         
-        
-        
         [self spin];
         
+        [[DataBaseDirector getInstance] clearBase];
         
-        [(AppDelegate *)[[UIApplication sharedApplication] delegate] clearBase];
         [self updateContent:nil];
    
     }
@@ -175,26 +164,15 @@
     
 }
 
-
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    
-    News *newsData = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    
-    MyCell *mycell = (MyCell *)cell;
-    [mycell configureCell:newsData];
-}
-
-
-
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    MyCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER forIndexPath:indexPath];
+    NewsItemCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER forIndexPath:indexPath];
+    News *newsData = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    [self configureCell:cell atIndexPath:indexPath];
+    [cell configureCell:newsData];
 
-      return cell;
+    return cell;
 }
 
 
@@ -219,16 +197,17 @@
 
 -(void)dataLoadNotification : (NSNotification *)notification{
     
-    self.fetchedResultsController = nil;
+    self.fetchedResultsController =[[DataBaseDirector getInstance] fetchedResultController:self];
+    
     
     
     [self.tableView setDataSource:self];
     [self.tableView setDelegate:self];
     
+    
     NSError *error;
     [self.fetchedResultsController performFetch:&error];
     
-
     [self.indicator stopAnimating];
     [self.overlayView removeFromSuperview];
     self.tableView.scrollEnabled = true;
@@ -241,37 +220,7 @@
 
 
 #pragma mark - Fetched Results Controller Delegate
-
-- (NSFetchedResultsController *)fetchedResultsController {
-    
-    if (_fetchedResultsController != nil) {
-        return _fetchedResultsController;
-    }
-    
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:TABLE_NEWS inManagedObjectContext:[(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]];
-    [fetchRequest setEntity:entity];
-    
-    NSSortDescriptor *sort = [[NSSortDescriptor alloc]
-                              initWithKey:SORT_DESCRIPTOR_FIELD_NAME ascending:NO];
-    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
-    
-    [fetchRequest setFetchBatchSize:20];
-    
-    
-    
-    NSFetchedResultsController *theFetchedResultsController =
-    [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                        managedObjectContext:[(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext] sectionNameKeyPath:SECTION_NAME_KEYPATH
-                                                   cacheName:CACHE_NAME];
-    _fetchedResultsController = theFetchedResultsController;
-    _fetchedResultsController.delegate = self;
-    
-    return _fetchedResultsController;
-    
-}
-
+ 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
     // The fetch controller is about to start sending change notifications, so prepare the table view for updates.
     [self.tableView beginUpdates];
@@ -293,7 +242,8 @@
             break;
             
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            //[self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            //[self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
             break;
             
         case NSFetchedResultsChangeMove:

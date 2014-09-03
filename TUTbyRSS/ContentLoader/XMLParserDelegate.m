@@ -10,6 +10,8 @@
 #import "News+Create.h"
 #import "AppDelegate.h"
 #import "Constants.h"
+#import "DataBaseDirector.h"
+#import "IncomingNews.h"
 
 @interface XMLParserDelegate()
 
@@ -21,11 +23,14 @@
 
 @property (strong, nonatomic) NSString *template;
 
+
+
 @end
 
 
 @implementation XMLParserDelegate
 
+@synthesize objects = _objects;
 
 - (void) parserDidStartDocument:(NSXMLParser *)parser{
     self.title = [[NSString alloc] init];
@@ -34,6 +39,8 @@
     self.imageURL = [[NSString alloc] init];
     self.date = [[NSString alloc] init];
     self.template = [[NSString alloc] init];
+    
+    self.objects = [[NSMutableArray alloc] init];
   
 }
 
@@ -69,19 +76,21 @@ didStartElement:(NSString *)elementName
   qualifiedName:(NSString *)qName{
    
     if ([elementName isEqualToString:ITEM]){
-       /* NSLog(@"title = %@", self.title);
+       
+        IncomungNews *news = [[IncomungNews alloc] init];
+        news.title = self.title;
+        news.link = self.link;
+        news.text = self.text;
+        news.imageURL = self.imageURL;
+        news.date = self.date;
+        
+        [self.objects addObject:news];
+        
+        /* NSLog(@"title = %@", self.title);
         NSLog(@"link = %@", self.link);
         NSLog(@"text = %@", self.text);
         NSLog(@"URL = %@", self.imageURL);
         NSLog(@"date = %@", self.date);*/
-        
-        [News newsFromTitle:self.title
-                       link:self.link
-                       text:self.text
-                        URL:self.imageURL
-                       date:self.date];
-        
-        [(AppDelegate *)[[UIApplication sharedApplication] delegate] saveContext];
         
     } else if ([elementName isEqualToString:TITLE]){
         self.title = self.template;

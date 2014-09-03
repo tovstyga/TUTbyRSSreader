@@ -7,6 +7,7 @@
 //
 
 #import "News.h"
+#import "IncomingNews.h"
 
 @interface News (Create)
 
@@ -17,5 +18,6 @@
                     URL : (NSString *)URL
                    date : (NSString *)dateString;
 
++(News *)newsFromIncomingNews:(IncomungNews *)incoming;
 
 @end

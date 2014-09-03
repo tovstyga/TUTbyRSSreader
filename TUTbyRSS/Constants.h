@@ -88,4 +88,5 @@
 #define CACHE_NAME @"Cache"
 
 #define DEFAULT_IMAGE_NAME @"icon.jpg"
+
 @end

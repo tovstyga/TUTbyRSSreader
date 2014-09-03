@@ -29,7 +29,9 @@
 		84CBA21819A337F0004A6EB7 /* XMLParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CBA21719A337F0004A6EB7 /* XMLParserDelegate.m */; };
 		84CBA21E19A3753D004A6EB7 /* News+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CBA21D19A3753D004A6EB7 /* News+Create.m */; };
 		84CBA22419A381D1004A6EB7 /* CDTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CBA22319A381D1004A6EB7 /* CDTableViewController.m */; };
-		84EEE82B19AEF4B200D234CF /* MyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EEE82A19AEF4B200D234CF /* MyCell.m */; };
+		84EEE82B19AEF4B200D234CF /* NewsItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EEE82A19AEF4B200D234CF /* NewsItemCell.m */; };
+		84FD69DB19B5D3000085C89F /* DataBaseDirector.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FD69DA19B5D3000085C89F /* DataBaseDirector.m */; };
+		84FD69DE19B603120085C89F /* IncomingNews.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FD69DD19B603120085C89F /* IncomingNews.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,8 +77,12 @@
 		84CBA21D19A3753D004A6EB7 /* News+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "News+Create.m"; sourceTree = "<group>"; };
 		84CBA22219A381D1004A6EB7 /* CDTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTableViewController.h; sourceTree = "<group>"; };
 		84CBA22319A381D1004A6EB7 /* CDTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTableViewController.m; sourceTree = "<group>"; };
-		84EEE82919AEF4B200D234CF /* MyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCell.h; sourceTree = "<group>"; };
-		84EEE82A19AEF4B200D234CF /* MyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCell.m; sourceTree = "<group>"; };
+		84EEE82919AEF4B200D234CF /* NewsItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsItemCell.h; sourceTree = "<group>"; };
+		84EEE82A19AEF4B200D234CF /* NewsItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsItemCell.m; sourceTree = "<group>"; };
+		84FD69D919B5D3000085C89F /* DataBaseDirector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBaseDirector.h; sourceTree = "<group>"; };
+		84FD69DA19B5D3000085C89F /* DataBaseDirector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBaseDirector.m; sourceTree = "<group>"; };
+		84FD69DC19B603120085C89F /* IncomingNews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncomingNews.h; sourceTree = "<group>"; };
+		84FD69DD19B603120085C89F /* IncomingNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncomingNews.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +195,8 @@
 				84326C1619ADADAB008C171E /* News.m */,
 				84CBA21C19A3753D004A6EB7 /* News+Create.h */,
 				84CBA21D19A3753D004A6EB7 /* News+Create.m */,
+				84FD69DC19B603120085C89F /* IncomingNews.h */,
+				84FD69DD19B603120085C89F /* IncomingNews.m */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -196,12 +204,14 @@
 		84F31B1819A5CE61001F950E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				84EEE82919AEF4B200D234CF /* MyCell.h */,
-				84EEE82A19AEF4B200D234CF /* MyCell.m */,
+				84EEE82919AEF4B200D234CF /* NewsItemCell.h */,
+				84EEE82A19AEF4B200D234CF /* NewsItemCell.m */,
 				84CBA22219A381D1004A6EB7 /* CDTableViewController.h */,
 				84CBA22319A381D1004A6EB7 /* CDTableViewController.m */,
 				841242F719A4DFDF00A2B7F0 /* WebViewController.h */,
 				841242F819A4DFDF00A2B7F0 /* WebViewController.m */,
+				84FD69D919B5D3000085C89F /* DataBaseDirector.h */,
+				84FD69DA19B5D3000085C89F /* DataBaseDirector.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -314,13 +324,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				84CBA21E19A3753D004A6EB7 /* News+Create.m in Sources */,
+				84FD69DB19B5D3000085C89F /* DataBaseDirector.m in Sources */,
 				84CBA1E019A329F9004A6EB7 /* AppDelegate.m in Sources */,
 				84326C1719ADADAB008C171E /* News.m in Sources */,
 				841242F919A4DFDF00A2B7F0 /* WebViewController.m in Sources */,
 				84CBA22419A381D1004A6EB7 /* CDTableViewController.m in Sources */,
 				84CBA21519A32EA3004A6EB7 /* RSSDataLoader.m in Sources */,
 				84CBA1DC19A329F9004A6EB7 /* main.m in Sources */,
-				84EEE82B19AEF4B200D234CF /* MyCell.m in Sources */,
+				84FD69DE19B603120085C89F /* IncomingNews.m in Sources */,
+				84EEE82B19AEF4B200D234CF /* NewsItemCell.m in Sources */,
 				84CBA1E319A329F9004A6EB7 /* TUTbyRSS.xcdatamodeld in Sources */,
 				84CBA21819A337F0004A6EB7 /* XMLParserDelegate.m in Sources */,
 			);

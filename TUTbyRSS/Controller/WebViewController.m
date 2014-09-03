@@ -29,7 +29,7 @@
 {
     [super viewDidLoad];
     
-    NSURL* url = [NSURL URLWithString:[(AppDelegate *)[[UIApplication sharedApplication] delegate] getUrl]];
+    NSURL* url = [NSURL URLWithString:[(AppDelegate *)[[UIApplication sharedApplication] delegate] url]];
     NSURLRequest* request = [NSURLRequest requestWithURL:url];
     
     [self.webView setScalesPageToFit:YES];

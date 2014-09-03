@@ -10,6 +10,6 @@
 
 @interface CDTableViewController : UITableViewController <UIActionSheetDelegate, NSFetchedResultsControllerDelegate>
 
-@property (strong, nonatomic, getter = fetchedResultsController) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 @end

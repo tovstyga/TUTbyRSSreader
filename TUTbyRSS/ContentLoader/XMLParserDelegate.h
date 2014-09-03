@@ -10,4 +10,6 @@
 
 @interface XMLParserDelegate : NSObject<NSXMLParserDelegate>
 
+@property (strong, nonatomic) NSMutableArray *objects;
+
 @end
