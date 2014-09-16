@@ -45,6 +45,7 @@
 
 #define TUT @"http://img.tyt.by/thumbnails"
 
+
 //end xml constants
 
 #define EMPTY_STRING @""
@@ -88,5 +89,7 @@
 #define CACHE_NAME @"Cache"
 
 #define DEFAULT_IMAGE_NAME @"icon.jpg"
+
+#define LANGUAGE_KEY @"language"
 
 @end

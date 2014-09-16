@@ -23,12 +23,15 @@
 @property (strong, nonatomic) UIActivityIndicatorView *indicator;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *updateBTN;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *clearBTN;
+@property (strong, nonatomic) NSString *lastLang;
 
 @end
 
 @implementation CDTableViewController
 
 @synthesize fetchedResultsController = _fetchedResultsController;
+
+
 
 //UIView methods
 
@@ -38,7 +41,7 @@
     if (self) {
         // Custom initialization
         
-    }
+           }
     return self;
 }
 
@@ -46,13 +49,10 @@
 {
     [super viewDidLoad];
     
-
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(dataLoadNotification:)
                                                  name:LOADING_NEWS_FINISHED
                                                object:nil];
-    
     
     self.fetchedResultsController = [[DataBaseDirector getInstance] fetchedResultController:self];
     NSError *error;
@@ -86,9 +86,6 @@
     
     
 }
-
-//end UIView methods
-
 
 
 - (IBAction)updateContent:(id)sender {
