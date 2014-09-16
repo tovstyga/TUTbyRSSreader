@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  TUTbyRSS
+
+  Created by Alex Tovstyga on 9/16/14.
+  Copyright (c) 2014 TAB. All rights reserved.
+*/
+
+/* site name */
+
+"TUT.BY" = "TUT.BY";
+
+/* lost internet connection message */
+
+"Lost internet connection :(" = "Lost internet connection :(";
+
+/* lost internet connection allert cancel button title */
+
+"OK" = "OK";
+
+/* celaning action sheet title */
+
+"Are you sure?" = "Are you sure?";
+
+/* cleaning action sheet cancel button title */
+
+"No Way!" = "No Way!";
+
+/* cleaning action sheet ok button title */
+
+"Yes, I'm Sure" = "Yes, I'm Sure";

@@ -58,10 +58,10 @@ static RSSDataLoader *sharedInstance;
     
     if ([parser parserError]){
         
-        UIAlertView *view  = [[UIAlertView alloc] initWithTitle:TUT_BY
-                                                        message:LOST_INTERNET_CONNECTION
+        UIAlertView *view  = [[UIAlertView alloc] initWithTitle:NSLocalizedString(TUT_BY, @"site name")
+                                                        message:NSLocalizedString(LOST_INTERNET_CONNECTION, @"lost internet connection message")
                                                        delegate:nil
-                                              cancelButtonTitle:OK_BTN
+                                              cancelButtonTitle:NSLocalizedString(OK_BTN, @"lost internet connection allert cancel button title")
                                               otherButtonTitles:nil, nil];
         dispatch_sync(dispatch_get_main_queue(), ^{[view show];});
         

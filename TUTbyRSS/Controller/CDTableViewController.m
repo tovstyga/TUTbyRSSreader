@@ -53,6 +53,7 @@
                                                  name:LOADING_NEWS_FINISHED
                                                object:nil];
     
+    
     self.fetchedResultsController = [[DataBaseDirector getInstance] fetchedResultController:self];
     NSError *error;
     [self.fetchedResultsController performFetch:&error];
@@ -98,13 +99,14 @@
 }
 
 - (IBAction)clearBase:(id)sender {
-    
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:CLEANING_ACTION_SHEET_TITLE
+  
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(CLEANING_ACTION_SHEET_TITLE, @"celaning action sheet title")
                                                              delegate:self
-                                                    cancelButtonTitle:CLEANING_ACTION_SHEET_CANCEL_BTN_TITLE
-                                               destructiveButtonTitle:CLEANING_ACTION_SHEET_OK_BTN_TITLE
+                                                    cancelButtonTitle:NSLocalizedString(CLEANING_ACTION_SHEET_CANCEL_BTN_TITLE, @"cleaning action sheet cancel button title")
+                                               destructiveButtonTitle:NSLocalizedString(CLEANING_ACTION_SHEET_OK_BTN_TITLE, @"cleaning action sheet ok button title")
                                                     otherButtonTitles:nil, nil];
     [actionSheet showInView:self.view];
+  
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex{
