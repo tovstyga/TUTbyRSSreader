@@ -54,6 +54,14 @@
                                                  name:LOADING_NEWS_FINISHED
                                                object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationWillEnterForeground:)
+                                                 name:UIApplicationWillEnterForegroundNotification
+                                               object:[UIApplication sharedApplication]];
+    
+    self.lastLang = [[NSUserDefaults standardUserDefaults] objectForKey:LANGUAGE_KEY];
+    if (!self.lastLang) self.lastLang = ENGLISH;
+    
     self.fetchedResultsController = [[DataBaseDirector getInstance] fetchedResultController:self];
     NSError *error;
     [self.fetchedResultsController performFetch:&error];
@@ -213,6 +221,22 @@
     self.navigationItem.rightBarButtonItem.enabled = true;
     self.navigationItem.leftBarButtonItem.enabled = true;
 
+}
+
+-(void)applicationWillEnterForeground:(NSNotification *)notification{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![self.lastLang isEqualToString:[defaults objectForKey:LANGUAGE_KEY]]){
+       
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(ALERT_RESTART_TITLE, @"alert restart title")
+                                                        message:NSLocalizedString(ALERT_RESTART_MESSAGE, @"alert restart message")
+                                                       delegate:nil
+                                              cancelButtonTitle:OK_BTN
+                                              otherButtonTitles:nil, nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [alert show];
+        });
+       
+    }
 }
 
 //end notification handler

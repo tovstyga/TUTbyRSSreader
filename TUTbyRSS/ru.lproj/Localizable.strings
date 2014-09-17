@@ -29,3 +29,11 @@
 /* cleaning action sheet ok button title */
 
 "Yes, I'm Sure" = "Да, я уверен";
+
+/* alert restart title */
+
+"Restart application" = "Перезапуск приложения";
+
+/* alert restart message */
+
+"Language application has been changed. Please restart thе application." = "Язык приложения был изменён. Пожалуйста, перезапустите приложение.";

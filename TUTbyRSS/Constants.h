@@ -96,4 +96,10 @@
 
 #define PNG @"png"
 
+#define ENGLISH @"en_US"
+
+#define ALERT_RESTART_TITLE @"Restart application"
+
+#define ALERT_RESTART_MESSAGE @"Language application has been changed. Please restart thе application."
+
 @end
