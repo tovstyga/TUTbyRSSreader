@@ -32,6 +32,8 @@
 
 @synthesize objects = _objects;
 
+bool description;
+
 - (void) parserDidStartDocument:(NSXMLParser *)parser{
     self.title = [[NSString alloc] init];
     self.link = [[NSString alloc] init];
@@ -42,6 +44,7 @@
     
     self.objects = [[NSMutableArray alloc] init];
   
+    description = false;
 }
 
 - (void) parserDidEndDocument:(NSXMLParser *)parser{
@@ -63,9 +66,11 @@ didStartElement:(NSString *)elementName
     if ([elementName isEqualToString:DESCRIPTION]) {
         counter = 0;
     } else if ([elementName isEqualToString:ENCLOSURE]){
+        description = true;
         NSString *tmp = [attributeDict objectForKey:URL_IMG];
         tmp = [tmp substringFromIndex:17];
         self.imageURL = [NSString stringWithFormat:@"%@%@",TUT, tmp];
+        //description = false;
     }
     
 }
@@ -81,10 +86,13 @@ didStartElement:(NSString *)elementName
         news.title = self.title;
         news.link = self.link;
         news.text = self.text;
-        news.imageURL = self.imageURL;
+        if (description)
+            news.imageURL = self.imageURL;
         news.date = self.date;
         
         [self.objects addObject:news];
+        
+        description = false;
         
         /* NSLog(@"title = %@", self.title);
         NSLog(@"link = %@", self.link);
