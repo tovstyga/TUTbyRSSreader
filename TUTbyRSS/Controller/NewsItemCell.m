@@ -44,24 +44,29 @@
     } else {
        
         self.imageCell.image = [UIImage imageNamed:DEFAULT_IMAGE_NAME];
-       
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:news.imageURL]];
-            NSError *error = nil;
-            
-            
-            NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
-            if ((error == nil) && (data != nil)){
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    news.image = data;
-                    self.imageCell.image = [UIImage imageWithData:data];
-                });
-                
-            } else {
-                // NSLog(@"ERROR IMAGE LOAD");
-            }
         
-        });
+        NSString *extension = [news.imageURL substringFromIndex:(news.imageURL.length - 3)];
+        
+        if (extension && [extension isEqualToString:JPG]){
+        
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:news.imageURL]];
+                NSError *error = nil;
+            
+            
+                NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+                if ((error == nil) && (data != nil)){
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        news.image = data;
+                        self.imageCell.image = [UIImage imageWithData:data];
+                    });
+                
+                } else {
+                    // NSLog(@"ERROR IMAGE LOAD");
+                }
+        
+            });
+        }
     }
 }
 

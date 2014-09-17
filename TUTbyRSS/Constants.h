@@ -92,4 +92,8 @@
 
 #define LANGUAGE_KEY @"language"
 
+#define JPG @"jpg"
+
+#define PNG @"png"
+
 @end
